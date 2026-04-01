@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sn-trendy-api
+    runtime: node
+    rootDir: apps/api
+    buildCommand: npm install
+    startCommand: node src/main.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: POCKETBASE_URL
+        sync: false
+      - key: PB_SUPERUSER_EMAIL
+        sync: false
+      - key: PB_SUPERUSER_PASSWORD
+        sync: false
