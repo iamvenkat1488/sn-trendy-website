@@ -5,6 +5,8 @@ import { Search, ShoppingCart, Heart, User, Menu, X, LogOut } from 'lucide-react
 import { useAuth } from '@/contexts/AuthContext.jsx';
 import { useCart } from '@/contexts/CartContext.jsx';
 import { Button } from '@/components/ui/button';
+import AnnouncementBanner from '@/components/AnnouncementBanner.jsx';
+import siteConfig from '@/config/siteConfig.js';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,12 +45,26 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
+    <>
+      <AnnouncementBanner />
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="font-display text-2xl font-bold text-primary">SN Trendy</span>
-            <span className="font-display text-2xl font-light">Collections</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src={siteConfig.logo} 
+              alt={siteConfig.siteName}
+              className="h-16 w-16 object-contain drop-shadow-lg"
+              onError={(e) => {
+                // Fallback to text logo if image fails to load
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="flex items-center space-x-2" style={{display: 'none'}}>
+              <span className="font-display text-2xl font-bold text-primary">SN Trendy</span>
+              <span className="font-display text-2xl font-light">Collections</span>
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8">
@@ -174,6 +190,7 @@ const Header = () => {
         </div>
       </div>
     </header>
+    </>
   );
 };
 

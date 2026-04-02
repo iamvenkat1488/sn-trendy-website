@@ -8,6 +8,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProductCard from '@/components/ProductCard.jsx';
+import TrustBadges from '@/components/TrustBadges.jsx';
+import WhatsAppButton from '@/components/WhatsAppButton.jsx';
+import CustomerReviews from '@/components/CustomerReviews.jsx';
 import pb from '@/lib/pocketbaseClient.js';
 
 const HomePage = () => {
@@ -113,6 +116,8 @@ const HomePage = () => {
         </div>
       </section>
 
+      <TrustBadges />
+
       <section className="bg-secondary py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
@@ -175,6 +180,9 @@ const HomePage = () => {
         )}
       </section>
 
+      <CustomerReviews />
+
+      <WhatsAppButton />
       <Footer />
     </>
   );
