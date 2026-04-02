@@ -54,17 +54,15 @@ const Header = () => {
             <img 
               src={siteConfig.logo} 
               alt={siteConfig.siteName}
-              className="h-16 w-16 object-contain drop-shadow-lg"
+              className="h-16 w-auto object-contain drop-shadow-lg"
               onError={(e) => {
-                // Fallback to text logo if image fails to load
                 e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
+                e.target.nextSibling.style.display = 'block';
               }}
             />
-            <div className="flex items-center space-x-2" style={{display: 'none'}}>
-              <span className="font-display text-2xl font-bold text-primary">SN Trendy</span>
-              <span className="font-display text-2xl font-light">Collections</span>
-            </div>
+            <span className="font-display text-2xl font-bold text-primary" style={{display: 'none'}}>
+              SN Trendy Collections
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8">
