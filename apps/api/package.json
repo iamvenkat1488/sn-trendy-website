@@ -5,6 +5,7 @@
   "description": "Express.js API Server",
   "main": "src/main.js",
   "scripts": {
+    "build": "echo 'No build needed for API'",
     "start": "node src/main.js",
     "dev": "node src/main.js",
     "lint": "eslint . --quiet"
