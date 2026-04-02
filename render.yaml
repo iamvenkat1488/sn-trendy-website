@@ -1,4 +1,5 @@
 services:
+  # API Service
   - type: web
     name: sn-trendy-api
     runtime: node
@@ -11,10 +12,28 @@ services:
       - key: PORT
         value: 10000
       - key: CORS_ORIGIN
-        value: "*"
+        value: https://sntrendycollections.in
       - key: POCKETBASE_URL
         sync: false
       - key: PB_SUPERUSER_EMAIL
         sync: false
       - key: PB_SUPERUSER_PASSWORD
         sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+
+  # PocketBase Service
+  - type: web
+    name: sn-trendy-pocketbase
+    runtime: docker
+    rootDir: apps/pocketbase
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 10000
+    disk:
+      name: pocketbase-data
+      mountPath: /pb_data
+      sizeGB: 1
