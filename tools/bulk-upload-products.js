@@ -34,6 +34,7 @@ const pb = new PocketBase(POCKETBASE_URL);
  *     "sizes": ["Free Size"],
  *     "colors": ["Red", "Maroon"],
  *     "images": ["saree1-img1.jpg", "saree1-img2.jpg"],
+ *     "tags": ["New Arrival", "Trending"],
  *     "enabled": true
  *   }
  * ]
@@ -70,6 +71,11 @@ async function uploadProducts() {
                 formData.append('enabled', product.enabled !== false);
                 formData.append('rating', product.rating || 0);
                 formData.append('reviews_count', product.reviews_count || 0);
+                
+                // Add tags if provided
+                if (product.tags && product.tags.length > 0) {
+                    formData.append('tags', JSON.stringify(product.tags));
+                }
 
                 // Add images
                 if (product.images && product.images.length > 0) {

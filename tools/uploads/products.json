@@ -8,6 +8,7 @@
     "sizes": ["Free Size"],
     "colors": ["Red", "Maroon"],
     "images": ["saree1-img1.jpg", "saree1-img2.jpg"],
+    "tags": ["New Arrival", "Trending"],
     "rating": 4.5,
     "reviews_count": 25,
     "enabled": true
@@ -21,6 +22,7 @@
     "sizes": ["S", "M", "L", "XL"],
     "colors": ["Blue", "Navy"],
     "images": ["kurti1-img1.jpg"],
+    "tags": ["Best Seller"],
     "rating": 4.2,
     "reviews_count": 15,
     "enabled": true

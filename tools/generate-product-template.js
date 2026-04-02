@@ -39,6 +39,7 @@ try {
         sizes: ['Free Size'],  // Or: ['S', 'M', 'L', 'XL']
         colors: ['Red'],  // Add actual colors
         images: [file],
+        tags: ['New Arrival'],  // Options: New Arrival, Trending, Best Seller, Sale, Featured
         rating: 4.5,
         reviews_count: 0,
         enabled: true
