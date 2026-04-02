@@ -1,0 +1,39 @@
+name: Auto Upload Products
+
+on:
+  push:
+    paths:
+      - 'tools/uploads/images/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  upload-products:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd tools
+          npm install
+          
+      - name: Upload products to PocketBase
+        run: |
+          cd tools
+          npm run auto-upload
+        env:
+          POCKETBASE_URL: ${{ secrets.POCKETBASE_URL }}
+          PB_ADMIN_EMAIL: ${{ secrets.PB_ADMIN_EMAIL }}
+          PB_ADMIN_PASSWORD: ${{ secrets.PB_ADMIN_PASSWORD }}
+          
+      - name: Notify completion
+        run: echo "✅ Products uploaded successfully!"

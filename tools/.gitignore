@@ -1,9 +1,8 @@
 # Environment variables
 .env
 
-# Uploaded images (too large for git)
-uploads/images/*
-!uploads/images/.gitkeep
+# Uploaded images - KEEP THESE for auto-upload
+# (Images are committed to trigger GitHub Actions)
 
 # Exports (contains user data)
 exports/*

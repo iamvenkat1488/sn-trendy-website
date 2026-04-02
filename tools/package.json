@@ -5,9 +5,10 @@
   "description": "Management tools for SN Trendy Collections",
   "scripts": {
     "upload-products": "node bulk-upload-products.js",
+    "auto-upload": "node auto-upload-products.js",
     "export-users": "node export-users.js",
     "generate-template": "node generate-product-template.js",
-    "help": "echo 'Available commands: upload-products, export-users, generate-template'"
+    "help": "echo 'Available commands: auto-upload, upload-products, export-users, generate-template'"
   },
   "dependencies": {
     "pocketbase": "^0.25.0"
