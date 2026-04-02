@@ -16,8 +16,11 @@ RUN wget https://github.com/pocketbase/pocketbase/releases/download/v0.25.0/pock
 COPY pb_migrations /pb_migrations
 COPY pb_hooks /pb_hooks
 
+# Set data directory
+ENV PB_DATA_DIR=/pb_data
+
 # Expose port
 EXPOSE 10000
 
-# Start PocketBase
-CMD ["./pocketbase", "serve", "--http=0.0.0.0:10000"]
+# Start PocketBase with data directory
+CMD ["./pocketbase", "serve", "--http=0.0.0.0:10000", "--dir=/pb_data"]
