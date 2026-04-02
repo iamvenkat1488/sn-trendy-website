@@ -8,7 +8,7 @@
 ✅ PocketBase: https://sn-trendy.pockethost.io
 ✅ SSL Certificate: Active
 ✅ User Signup: Capturing all details
-✅ Bulk Upload System: Ready
+✅ Bulk Upload System: Ready, as it is completed.
 ```
 
 ---
