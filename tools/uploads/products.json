@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Beautiful Red Silk Saree",
+    "description": "Elegant silk saree perfect for weddings and special occasions",
+    "price": 2999,
+    "original_price": 4999,
+    "category": "Sarees",
+    "sizes": ["Free Size"],
+    "colors": ["Red", "Maroon"],
+    "images": ["saree1-img1.jpg", "saree1-img2.jpg"],
+    "rating": 4.5,
+    "reviews_count": 25,
+    "enabled": true
+  },
+  {
+    "name": "Designer Blue Kurti",
+    "description": "Comfortable cotton kurti for daily wear",
+    "price": 899,
+    "original_price": 1499,
+    "category": "Kurtis",
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": ["Blue", "Navy"],
+    "images": ["kurti1-img1.jpg"],
+    "rating": 4.2,
+    "reviews_count": 15,
+    "enabled": true
+  }
+]

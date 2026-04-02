@@ -1,0 +1,15 @@
+{
+  "name": "sn-trendy-tools",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Management tools for SN Trendy Collections",
+  "scripts": {
+    "upload-products": "node bulk-upload-products.js",
+    "export-users": "node export-users.js",
+    "generate-template": "node generate-product-template.js",
+    "help": "echo 'Available commands: upload-products, export-users, generate-template'"
+  },
+  "dependencies": {
+    "pocketbase": "^0.25.0"
+  }
+}
