@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import Header from '@/components/Header.jsx';
@@ -11,6 +10,10 @@ import ProductCard from '@/components/ProductCard.jsx';
 import TrustBadges from '@/components/TrustBadges.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import CustomerReviews from '@/components/CustomerReviews.jsx';
+import HeroCarousel from '@/components/HeroCarousel.jsx';
+import WhyChooseUs from '@/components/WhyChooseUs.jsx';
+import Newsletter from '@/components/Newsletter.jsx';
+import InstagramGallery from '@/components/InstagramGallery.jsx';
 import pb from '@/lib/pocketbaseClient.js';
 
 const HomePage = () => {
@@ -46,53 +49,29 @@ const HomePage = () => {
   };
 
   const categories = [
-    { name: 'Sarees', slug: 'sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=500&fit=crop' },
-    { name: 'Kurtis', slug: 'kurtis', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400&h=500&fit=crop' },
-    { name: 'Lehengas', slug: 'lehengas', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=400&h=500&fit=crop' },
-    { name: 'Western Dresses', slug: 'western', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop' },
-    { name: 'Daily Wear', slug: 'daily-wear', image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop' }
+    { name: 'Sarees', slug: 'sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&h=600&fit=crop', description: 'Timeless elegance' },
+    { name: 'Kurtis', slug: 'kurtis', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=500&h=600&fit=crop', description: 'Everyday chic' },
+    { name: 'Lehengas', slug: 'lehengas', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=500&h=600&fit=crop', description: 'Bridal dreams' },
+    { name: 'Western Dresses', slug: 'western', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&h=600&fit=crop', description: 'Modern style' }
   ];
 
   return (
     <>
       <Helmet>
-        <title>SN Trendy Collections - Premium Ethnic & Western Wear</title>
-        <meta name="description" content="Discover premium sarees, kurtis, lehengas, and western wear at SN Trendy Collections. Shop the latest fashion trends with exclusive designs." />
+        <title>SN Trendy Collections - Elegance in Every Thread | Premium Ethnic & Western Wear</title>
+        <meta name="description" content="Discover luxury fashion at SN Trendy Collections. Shop premium sarees, kurtis, lehengas, and western wear. Latest trends, affordable prices, trusted by 10,000+ customers." />
       </Helmet>
       <Header />
 
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1675631082746-ef4c0c5ed67e"
-            alt="Fashion collection"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center lg:text-left">
-          <div className="max-w-2xl animate-fade-in">
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Discover Premium Collections
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Elevate your style with our curated selection of ethnic and western wear
-            </p>
-            <Link to="/products">
-              <Button size="lg" className="text-lg px-8 py-6 animate-fade-in-delay-1">
-                Shop Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="font-display text-4xl font-bold text-center mb-12">Shop by Category</h2>
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Shop by Category</h2>
+          <p className="text-lg text-muted-foreground">Explore our curated collections</p>
+        </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {categories.map((category, index) => (
             <Link
               key={category.slug}
@@ -100,15 +79,19 @@ const HomePage = () => {
               className="group animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-muted shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-muted shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="font-display text-xl font-bold text-white">{category.name}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <p className="text-sm font-medium mb-1 text-white/80">{category.description}</p>
+                  <h3 className="font-display text-2xl font-bold">{category.name}</h3>
+                  <div className="mt-3 inline-flex items-center text-sm font-medium group-hover:gap-2 transition-all">
+                    Shop Now <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
             </Link>
@@ -118,20 +101,15 @@ const HomePage = () => {
 
       <TrustBadges />
 
-      <section className="bg-secondary py-20">
+      <section className="bg-secondary/50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="font-display text-4xl font-bold">Trending Collections</h2>
-            <Link to="/products">
-              <Button variant="outline">
-                View All
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">Trending Now</h2>
+            <p className="text-lg text-muted-foreground">Handpicked styles our customers love</p>
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="space-y-4">
                   <Skeleton className="aspect-[3/4] w-full rounded-2xl" />
@@ -141,28 +119,35 @@ const HomePage = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {trendingProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {trendingProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+              <div className="text-center mt-12">
+                <Link to="/products">
+                  <Button size="lg" variant="outline" className="px-8">
+                    View All Products
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </>
           )}
         </div>
       </section>
 
+      <WhyChooseUs />
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="font-display text-4xl font-bold">New Arrivals</h2>
-          <Link to="/products">
-            <Button variant="outline">
-              View All
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4">New Arrivals</h2>
+          <p className="text-lg text-muted-foreground">Fresh styles just for you</p>
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="space-y-4">
                 <Skeleton className="aspect-[3/4] w-full rounded-2xl" />
@@ -172,7 +157,7 @@ const HomePage = () => {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {newArrivals.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -181,6 +166,10 @@ const HomePage = () => {
       </section>
 
       <CustomerReviews />
+
+      <InstagramGallery />
+
+      <Newsletter />
 
       <WhatsAppButton />
       <Footer />

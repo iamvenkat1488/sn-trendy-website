@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-border">
+      <div className="bg-card rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-border/50">
         <div className="relative aspect-[3/4] overflow-hidden bg-muted">
           <img
             src={imageUrl}
@@ -49,24 +49,24 @@ const ProductCard = ({ product }) => {
           />
           
           {/* Badges */}
-          <div className="absolute top-3 left-3 flex flex-col gap-2">
+          <div className="absolute top-4 left-4 flex flex-col gap-2">
             {hasSaleBadge && (
-              <div className="bg-destructive text-destructive-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <div className="bg-destructive text-destructive-foreground px-3 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm">
                 {discountPercent}% OFF
               </div>
             )}
             {hasNewBadge && (
-              <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <div className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm">
                 NEW
               </div>
             )}
             {hasTrendingBadge && (
-              <div className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <div className="bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm">
                 🔥 TRENDING
               </div>
             )}
             {hasBestSellerBadge && (
-              <div className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              <div className="bg-green-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg backdrop-blur-sm">
                 ⭐ BEST SELLER
               </div>
             )}
@@ -78,28 +78,28 @@ const ProductCard = ({ product }) => {
               e.preventDefault();
               toast('Wishlist feature coming soon');
             }}
-            className="absolute top-3 right-3 p-2 bg-background/90 backdrop-blur rounded-full hover:bg-background hover:scale-110 transition-all duration-200 shadow-lg"
+            className="absolute top-4 right-4 p-2.5 bg-white/95 backdrop-blur rounded-full hover:bg-white hover:scale-110 transition-all duration-200 shadow-lg"
           >
-            <Heart className="h-4 w-4" />
+            <Heart className="h-4 w-4 text-foreground" />
           </button>
           
           {/* Quick View Overlay */}
-          <div className={`absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ${
+          <div className={`absolute inset-0 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-[2px] flex items-end justify-center pb-6 transition-opacity duration-300 ${
             isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}>
             <Button
               onClick={handleQuickAdd}
-              className="bg-white text-black hover:bg-white/90"
-              size="sm"
+              className="bg-white text-black hover:bg-white/90 shadow-xl"
+              size="lg"
             >
               <ShoppingCart className="h-4 w-4 mr-2" />
-              Quick Add
+              Quick Add to Cart
             </Button>
           </div>
         </div>
 
-        <div className="p-4">
-          <h3 className="font-display text-lg font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
+        <div className="p-5">
+          <h3 className="font-display text-xl font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors">{product.name}</h3>
           
           {/* Category Badge */}
           <div className="mb-2">
@@ -155,8 +155,8 @@ const ProductCard = ({ product }) => {
 
           <Button
             onClick={handleQuickAdd}
-            className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
-            size="sm"
+            className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all shadow-sm"
+            size="lg"
             variant="outline"
           >
             <ShoppingCart className="h-4 w-4 mr-2" />

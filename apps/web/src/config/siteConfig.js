@@ -8,6 +8,7 @@
 export const siteConfig = {
   // Site Information
   siteName: 'SN Trendy Collections',
+  tagline: 'Elegance in Every Thread',
   siteUrl: 'https://sntrendycollections.in',
   contactEmail: 'info@sntrendycollections.in',
   logo: '/logo.png', // Place your logo.png in apps/web/public/ folder
@@ -15,7 +16,7 @@ export const siteConfig = {
   // WhatsApp Configuration
   whatsapp: {
     enabled: true, // Set to false to hide WhatsApp button
-    phoneNumber: '919876543210', // Replace with your WhatsApp number (with country code, no + or spaces)
+    phoneNumber: '917815885242', // Replace with your WhatsApp number (with country code, no + or spaces)
     defaultMessage: 'Hi! I am interested in your products.',
   },
   
