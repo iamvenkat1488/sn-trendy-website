@@ -8,18 +8,18 @@ const HeroCarousel = () => {
 
   const slides = [
     {
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1920&h=1080&fit=crop',
+      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1920&h=1080&fit=crop',
       title: 'Elegance in Every Thread',
-      subtitle: 'Discover our exclusive saree collection',
-      cta: 'Shop Sarees',
-      link: '/products?category=sarees'
+      subtitle: 'Discover our exclusive collection of premium ethnic wear',
+      cta: 'Shop Now',
+      link: '/products'
     },
     {
-      image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1920&h=1080&fit=crop',
-      title: 'Festive Collection 2024',
-      subtitle: 'Celebrate in style with our premium kurtis',
-      cta: 'Explore Now',
-      link: '/products?category=kurtis'
+      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1920&h=1080&fit=crop',
+      title: 'Festive Saree Collection',
+      subtitle: 'Celebrate in style with our handpicked sarees',
+      cta: 'Shop Sarees',
+      link: '/products?category=sarees'
     },
     {
       image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=1920&h=1080&fit=crop',
