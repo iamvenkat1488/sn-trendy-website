@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { ShoppingCart, Heart, Star, Minus, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShoppingCart, Heart, Star, Minus, Plus, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { toast } from 'sonner';
@@ -10,6 +10,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ProductCard from '@/components/ProductCard.jsx';
 import { useCart } from '@/contexts/CartContext.jsx';
+import siteConfig from '@/config/siteConfig.js';
 import pb from '@/lib/pocketbaseClient.js';
 
 const ProductDetailPage = () => {
@@ -65,13 +66,25 @@ const ProductDetailPage = () => {
     toast.success('Added to cart');
   };
 
-  const handleBuyNow = () => {
+  const handleWhatsAppOrder = () => {
     if (!selectedSize) {
       toast.error('Please select a size');
       return;
     }
-    addToCart(product, selectedSize, selectedColor, quantity);
-    navigate('/checkout');
+    const message = `Hi! I want to order:
+
+📦 Product: ${product.name}
+💰 Price: ₹${product.price}
+📏 Size: ${selectedSize}
+🎨 Color: ${selectedColor}
+🔢 Quantity: ${quantity}
+
+Total: ₹${(product.price * quantity).toLocaleString()}
+
+Please confirm availability and delivery details.`;
+    
+    const whatsappUrl = `https://wa.me/${siteConfig.whatsapp.phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const getStockStatus = () => {
@@ -297,23 +310,30 @@ const ProductDetailPage = () => {
               </div>
             </div>
 
-            <div className="flex space-x-4 pt-6">
-              <Button
-                onClick={handleAddToCart}
-                variant="outline"
-                className="flex-1"
-                size="lg"
-              >
-                <ShoppingCart className="h-5 w-5 mr-2" />
-                Add to Cart
-              </Button>
-              <Button
-                onClick={handleBuyNow}
-                className="flex-1"
-                size="lg"
-              >
-                Buy Now
-              </Button>
+            <div className="space-y-4 pt-6">
+              <div className="flex space-x-4">
+                <Button
+                  onClick={handleAddToCart}
+                  variant="outline"
+                  className="flex-1"
+                  size="lg"
+                >
+                  <ShoppingCart className="h-5 w-5 mr-2" />
+                  Add to Cart
+                </Button>
+                <Button
+                  onClick={handleWhatsAppOrder}
+                  className="flex-1 bg-green-600 hover:bg-green-700"
+                  size="lg"
+                >
+                  <MessageCircle className="h-5 w-5 mr-2" />
+                  Order on WhatsApp
+                </Button>
+              </div>
+              
+              <p className="text-xs text-center text-muted-foreground">
+                💬 Order via WhatsApp for instant confirmation & COD option
+              </p>
             </div>
 
             <Button
