@@ -18,9 +18,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Configuration
-const POCKETBASE_URL = process.env.POCKETBASE_URL || 'http://127.0.0.1:8090';
-const ADMIN_EMAIL = process.env.PB_ADMIN_EMAIL || 'admin@example.com';
-const ADMIN_PASSWORD = process.env.PB_ADMIN_PASSWORD || 'admin_password';
+const POCKETBASE_URL = process.env.POCKETBASE_URL || 'https://sn-trendy-pocketbase-dockerservice.onrender.com';
+const ADMIN_EMAIL = process.env.PB_ADMIN_EMAIL || 'admin@sntrendycollections.in';
+const ADMIN_PASSWORD = process.env.PB_ADMIN_PASSWORD || 'Qwerty@1234';
 
 const pb = new PocketBase(POCKETBASE_URL);
 
@@ -139,8 +139,17 @@ async function autoUploadProducts() {
         
         // Login as admin
         console.log('🔐 Logging in...');
-        await pb.admins.authWithPassword(ADMIN_EMAIL, ADMIN_PASSWORD);
-        console.log('✅ Logged in\n');
+        try {
+            await pb.admins.authWithPassword(ADMIN_EMAIL, ADMIN_PASSWORD);
+            console.log('✅ Logged in\n');
+        } catch (authError) {
+            console.error('❌ Login failed:', authError.message);
+            console.log('\nPlease check:');
+            console.log('1. PocketBase URL:', POCKETBASE_URL);
+            console.log('2. Admin Email:', ADMIN_EMAIL);
+            console.log('3. Admin Password is set correctly');
+            process.exit(1);
+        }
 
         // Read images
         const imagesDir = join(__dirname, 'uploads', 'images');
@@ -175,7 +184,7 @@ async function autoUploadProducts() {
                 formData.append('price', product.price);
                 formData.append('original_price', Math.round(product.price * 1.5)); // 50% markup
                 formData.append('category', product.category);
-                formData.append('sizes', JSON.stringify(product.sizes));
+                formData.append('sizes', JSON.stringify(product.sizes.map(size => ({ size, stock: 10 }))));
                 formData.append('colors', JSON.stringify(product.colors));
                 formData.append('tags', JSON.stringify(['New Arrival']));
                 formData.append('enabled', true);

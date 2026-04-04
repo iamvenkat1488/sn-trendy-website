@@ -17,6 +17,7 @@ import OrderConfirmationPage from '@/pages/OrderConfirmationPage.jsx';
 import UserProfilePage from '@/pages/UserProfilePage.jsx';
 import WishlistPage from '@/pages/WishlistPage.jsx';
 import AdminDashboard from '@/pages/AdminDashboard.jsx';
+import SimpleUploadPage from '@/pages/SimpleUploadPage.jsx';
 
 function App() {
   return (
@@ -68,6 +69,14 @@ function App() {
               element={
                 <ProtectedRoute adminOnly>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/upload"
+              element={
+                <ProtectedRoute adminOnly>
+                  <SimpleUploadPage />
                 </ProtectedRoute>
               }
             />

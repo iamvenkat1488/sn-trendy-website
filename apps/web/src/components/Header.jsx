@@ -37,11 +37,9 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Sarees', path: '/products?category=sarees' },
-    { name: 'Kurtis', path: '/products?category=kurtis' },
-    { name: 'Lehengas', path: '/products?category=lehengas' },
-    { name: 'Western Dresses', path: '/products?category=western' },
-    { name: 'Daily Wear', path: '/products?category=daily-wear' },
+    { name: 'Sarees', path: '/products?category=Sarees' },
+    { name: 'Lehengas', path: '/products?category=Lehengas' },
+    { name: 'Dresses', path: '/products?category=Dresses' },
   ];
 
   return (
@@ -94,6 +92,14 @@ const Header = () => {
 
             {isAuthenticated ? (
               <>
+                {isAdmin && (
+                  <Link to="/upload" className="hidden lg:flex items-center">
+                    <Button variant="default" size="sm" className="shadow-md font-medium tracking-wide">
+                      Upload Product
+                    </Button>
+                  </Link>
+                )}
+
                 <Link to="/wishlist" className="relative p-2 hover:bg-muted rounded-lg transition-colors duration-200">
                   <Heart className="h-5 w-5" />
                 </Link>
